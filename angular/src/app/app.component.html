@@ -1,0 +1,50 @@
+<mat-toolbar class="dark-theme">
+  <span>
+    <button mat-button routerLink="/">{{ title }}</button>
+    <button mat-button routerLink="/dashboard" *ngIf="isAuthenticated$ | async">
+      <mat-icon>dashboard</mat-icon>
+      Dashboard
+    </button>
+  </span>
+  <div>
+    <button mat-button routerLink="/register" *ngIf="!(isAuthenticated$ | async)">
+      <mat-icon>app_registration</mat-icon>
+      Register
+    </button>
+    <button mat-button routerLink="/login" *ngIf="!(isAuthenticated$ | async)">
+      <mat-icon>power_settings_new</mat-icon>
+      Login
+    </button>
+    <button mat-button *ngIf="isAuthenticated$ | async" (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
+      Logout
+    </button>
+    <button mat-button *ngIf="user$ | async as user" routerLink="/dashboard">
+      <mat-icon>person</mat-icon>
+      {{ user.email }}
+    </button>
+  </div>
+  <button mat-button [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-menu #menu="matMenu" class="primary-menu">
+  <button mat-menu-item routerLink="/dashboard">
+    <mat-icon>dashboard</mat-icon>
+    Dashboard
+  </button>
+  <button mat-menu-item routerLink="/register" *ngIf="!(isAuthenticated$ | async)">
+    <mat-icon>app_registration</mat-icon>
+    Register
+  </button>
+  <button mat-menu-item routerLink="/login" *ngIf="!(isAuthenticated$ | async)">
+    <mat-icon>power_settings_new</mat-icon>
+    Login
+  </button>
+  <button mat-menu-item *ngIf="isAuthenticated$ | async" (click)="logout()">
+    <mat-icon>exit_to_app</mat-icon>
+    Logout
+  </button>
+</mat-menu>
+
+<router-outlet (activate)="onRouteChange()"></router-outlet>

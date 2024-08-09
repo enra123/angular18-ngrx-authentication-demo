@@ -1,0 +1,311 @@
+@use "@angular/material" as mat;
+@include mat.core();
+
+$light-theme: mat.define-theme(
+    (
+      color: (
+        theme-type: light,
+        primary: mat.$magenta-palette,
+        tertiary: mat.$violet-palette,
+      ),
+    )
+);
+
+$dark-theme: mat.define-theme(
+    (
+      color: (
+        theme-type: dark,
+        primary: mat.$magenta-palette,
+        tertiary: mat.$violet-palette,
+      ),
+    )
+);
+
+@mixin app-theme($theme, $type: "light") {
+  @if $type == "light" {
+    @include mat.all-component-themes($theme);
+    .mat-toolbar {
+      background: mat.get-theme-color($theme, primary);
+      color: mat.get-theme-color($theme, primary, 100);
+      .mat-mdc-icon-button {
+        color: mat.get-theme-color($theme, primary, 100);
+      }
+    }
+  } @else {
+    @include mat.all-component-colors($theme);
+    .mat-toolbar {
+      background: mat.get-theme-color($theme, primary);
+      color: mat.get-theme-color($theme, primary, 20);
+      .mat-mdc-icon-button {
+        color: mat.get-theme-color($theme, primary, 20);
+      }
+    }
+  }
+}
+
+html {
+  // .app-light-theme (default)
+  @include app-theme($light-theme, "light");
+
+  .dark-theme {
+    @include app-theme($dark-theme, "dark");
+  }
+
+  //@media (prefers-color-scheme: light) {
+  //  .app-auto-theme {
+  //    @include app-theme($light-theme, "light");
+  //  }
+  //}
+  //
+  //@media (prefers-color-scheme: dark) {
+  //  .app-auto-theme {
+  //    @include app-theme($dark-theme, "dark");
+  //  }
+  //}
+}
+
+//@include mat.color-variants-backwards-compatibility($light-theme);
+//@include mat.typography-hierarchy($light-theme);
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-app-background {
+  background-color: #fffbfe;
+}
+
+.primary-badge {
+  @include mat.badge-color($light-theme, $color-variant: primary);
+}
+.secondary-badge {
+  @include mat.badge-color($light-theme, $color-variant: secondary);
+}
+.tertiary-badge {
+  @include mat.badge-color($light-theme, $color-variant: tertiary);
+}
+.error-badge {
+  @include mat.badge-color($light-theme, $color-variant: error);
+}
+
+.primary-button {
+  @include mat.button-color($light-theme, $color-variant: primary);
+}
+.secondary-button {
+  @include mat.button-color($light-theme, $color-variant: secondary);
+}
+.tertiary-button {
+  @include mat.button-color($light-theme, $color-variant: tertiary);
+}
+.error-button {
+  @include mat.button-color($light-theme, $color-variant: error);
+}
+
+.primary-checkbox {
+  @include mat.checkbox-color($light-theme, $color-variant: primary);
+}
+.secondary-checkbox {
+  @include mat.checkbox-color($light-theme, $color-variant: secondary);
+}
+.tertiary-checkbox {
+  @include mat.checkbox-color($light-theme, $color-variant: tertiary);
+}
+.error-checkbox {
+  @include mat.checkbox-color($light-theme, $color-variant: error);
+}
+
+.primary-chips {
+  @include mat.chips-color($light-theme, $color-variant: primary);
+}
+.secondary-chips {
+  @include mat.chips-color($light-theme, $color-variant: secondary);
+}
+.tertiary-chips {
+  @include mat.chips-color($light-theme, $color-variant: tertiary);
+}
+.error-chips {
+  @include mat.chips-color($light-theme, $color-variant: error);
+}
+
+.primary-datepicker {
+  @include mat.datepicker-color($light-theme, $color-variant: primary);
+}
+.secondary-datepicker {
+  @include mat.datepicker-color($light-theme, $color-variant: secondary);
+}
+.tertiary-datepicker {
+  @include mat.datepicker-color($light-theme, $color-variant: tertiary);
+}
+.error-datepicker {
+  @include mat.datepicker-color($light-theme, $color-variant: error);
+}
+
+.primary-fab {
+  @include mat.fab-color($light-theme, $color-variant: primary);
+}
+.secondary-fab {
+  @include mat.fab-color($light-theme, $color-variant: secondary);
+}
+.tertiary-fab {
+  @include mat.fab-color($light-theme, $color-variant: tertiary);
+}
+
+.primary-form-field {
+  @include mat.form-field-color($light-theme, $color-variant: primary);
+}
+.secondary-form-field {
+  @include mat.form-field-color($light-theme, $color-variant: secondary);
+}
+.tertiary-form-field {
+  @include mat.form-field-color($light-theme, $color-variant: tertiary);
+}
+.error-form-field {
+  @include mat.form-field-color($light-theme, $color-variant: error);
+}
+
+.surface-icon {
+  @include mat.icon-color($light-theme, $color-variant: surface);
+}
+.primary-icon {
+  @include mat.icon-color($light-theme, $color-variant: primary);
+}
+.secondary-icon {
+  @include mat.icon-color($light-theme, $color-variant: secondary);
+}
+.tertiary-icon {
+  @include mat.icon-color($light-theme, $color-variant: tertiary);
+}
+.error-icon {
+  @include mat.icon-color($light-theme, $color-variant: error);
+}
+
+.primary-option {
+  @include mat.option-color($light-theme, $color-variant: primary);
+}
+.secondary-option {
+  @include mat.option-color($light-theme, $color-variant: secondary);
+}
+.tertiary-option {
+  @include mat.option-color($light-theme, $color-variant: tertiary);
+}
+.error-option {
+  @include mat.option-color($light-theme, $color-variant: error);
+}
+
+.primary-progress-bar {
+  @include mat.progress-bar-color($light-theme, $color-variant: primary);
+}
+.secondary-progress-bar {
+  @include mat.progress-bar-color($light-theme, $color-variant: secondary);
+}
+.tertiary-progress-bar {
+  @include mat.progress-bar-color($light-theme, $color-variant: tertiary);
+}
+.error-progress-bar {
+  @include mat.progress-bar-color($light-theme, $color-variant: error);
+}
+
+.primary-progress-spinner {
+  @include mat.progress-spinner-color($light-theme, $color-variant: primary);
+}
+.secondary-progress-spinner {
+  @include mat.progress-spinner-color($light-theme, $color-variant: secondary);
+}
+.tertiary-progress-spinner {
+  @include mat.progress-spinner-color($light-theme, $color-variant: tertiary);
+}
+.error-progress-spinner {
+  @include mat.progress-spinner-color($light-theme, $color-variant: error);
+}
+
+.primary-pseudo-checkbox {
+  @include mat.pseudo-checkbox-color($light-theme, $color-variant: primary);
+}
+.secondary-pseudo-checkbox {
+  @include mat.pseudo-checkbox-color($light-theme, $color-variant: secondary);
+}
+.tertiary-pseudo-checkbox {
+  @include mat.pseudo-checkbox-color($light-theme, $color-variant: tertiary);
+}
+.error-pseudo-checkbox {
+  @include mat.pseudo-checkbox-color($light-theme, $color-variant: error);
+}
+
+.primary-radio {
+  @include mat.radio-color($light-theme, $color-variant: primary);
+}
+.secondary-radio {
+  @include mat.radio-color($light-theme, $color-variant: secondary);
+}
+.tertiary-radio {
+  @include mat.radio-color($light-theme, $color-variant: tertiary);
+}
+.error-radio {
+  @include mat.radio-color($light-theme, $color-variant: error);
+}
+
+.primary-select {
+  @include mat.select-color($light-theme, $color-variant: primary);
+}
+.secondary-select {
+  @include mat.select-color($light-theme, $color-variant: secondary);
+}
+.tertiary-select {
+  @include mat.select-color($light-theme, $color-variant: tertiary);
+}
+.error-select {
+  @include mat.select-color($light-theme, $color-variant: error);
+}
+
+.primary-slide-toggle {
+  @include mat.slide-toggle-color($light-theme, $color-variant: primary);
+}
+.secondary-slide-toggle {
+  @include mat.slide-toggle-color($light-theme, $color-variant: secondary);
+}
+.tertiary-slide-toggle {
+  @include mat.slide-toggle-color($light-theme, $color-variant: tertiary);
+}
+.error-slide-toggle {
+  @include mat.slide-toggle-color($light-theme, $color-variant: error);
+}
+
+.primary-slider {
+  @include mat.slider-color($light-theme, $color-variant: primary);
+}
+.secondary-slider {
+  @include mat.slider-color($light-theme, $color-variant: secondary);
+}
+.tertiary-slider {
+  @include mat.slider-color($light-theme, $color-variant: tertiary);
+}
+.error-slider {
+  @include mat.slider-color($light-theme, $color-variant: error);
+}
+
+.primary-stepper {
+  @include mat.stepper-color($light-theme, $color-variant: primary);
+}
+.secondary-stepper {
+  @include mat.stepper-color($light-theme, $color-variant: secondary);
+}
+.tertiary-stepper {
+  @include mat.stepper-color($light-theme, $color-variant: tertiary);
+}
+.error-stepper {
+  @include mat.stepper-color($light-theme, $color-variant: error);
+}
+
+.primary-tabs {
+  @include mat.tabs-color($light-theme, $color-variant: primary);
+}
+.secondary-tabs {
+  @include mat.tabs-color($light-theme, $color-variant: secondary);
+}
+.tertiary-tabs {
+  @include mat.tabs-color($light-theme, $color-variant: tertiary);
+}
+.error-tabs {
+  @include mat.tabs-color($light-theme, $color-variant: error);
+}
+
+
