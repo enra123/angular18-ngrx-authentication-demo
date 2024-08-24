@@ -1,5 +1,6 @@
 # Install
 
+Download and install MongoDB
 Run `npm install` in main folder and in angular/ folder
 
 ## Run development servers
