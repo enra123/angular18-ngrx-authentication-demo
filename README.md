@@ -1,3 +1,6 @@
+Demonstrating JWT token Authentication including Login, Register, Permission Guard using Angular(& NGRX) client-side and Express server-side 
+
+
 # Install
 
 Download and install MongoDB
